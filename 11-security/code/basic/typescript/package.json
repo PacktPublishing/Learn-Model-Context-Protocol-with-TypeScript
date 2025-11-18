@@ -1,0 +1,22 @@
+{
+    "type": "module",
+    "bin": {
+        "jwt-server": "./build/server.js"
+    },
+    "scripts": {
+        "start": "node ./build/server.js",
+        "client": "node ./build/client.js",
+        "build": "tsc"
+    },
+    "files": [
+        "build"
+    ],
+    "dependencies": {
+        "jsonwebtoken": "^9.0.2"
+    },
+    "devDependencies": {
+        "@types/node": "^20.11.24",
+        "@types/uuid": "^10.0.0",
+        "typescript": "^5.9.2"
+    }
+}
