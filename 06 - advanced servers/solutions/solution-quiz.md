@@ -1,8 +1,8 @@
 What are some benefits using a low level server?
 
-A: You use less memory 
-B: You have better control over how requests are processed.
-C: You can define your own transports
+- A: You use less memory 
+- B: You have better control over how requests are processed.
+- C: You can define your own transports
 
 **Answer**: B
 
