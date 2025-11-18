@@ -1,0 +1,53 @@
+import { Client } from "@modelcontextprotocol/sdk/client/index.js";
+import { SSEClientTransport } from "@modelcontextprotocol/sdk/client/sse.js";
+import { ElicitRequestSchema } from "@modelcontextprotocol/sdk/types.js"
+
+const client = new Client(
+    {
+      name: "test client",
+      version: "1.0",
+    },
+    {
+      capabilities: {
+        elicitation: {},
+      },
+    },
+  );
+
+let baseUrl = new URL("http://localhost:4000/sse");
+
+const sseTransport = new SSEClientTransport(baseUrl);
+
+client.setRequestHandler(ElicitRequestSchema, (params) => {
+    console.log(`${params.params.message}`);
+    console.log("\nProvide the following information:");
+    let schema = params.params.requestedSchema.properties;
+    for (let key in schema) {
+        console.log(`[INPUT]: '${key}' of type ${schema[key].type}`);
+    }
+
+    // TODO, ask for this input instead of faking the response like below
+
+    return {
+      action: "accept",
+      content: {
+        submitInformation: true,
+        name: "chris",
+        email: "chris@example.com"
+      },
+    };
+});
+
+async function main() {
+  await client.connect(sseTransport);
+  const result = await client.callTool({
+    name: "book-trip",
+    arguments: {
+        date: "2025-01-02"
+    }
+    });
+
+    console.log("Tool result: ", result);
+}
+
+main();
