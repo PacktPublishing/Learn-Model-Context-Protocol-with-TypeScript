@@ -1,0 +1,27 @@
+{
+	"servers": {
+		"my-mcp-server-3bd32500": {
+			"url": "https://learn.microsoft.com/api/mcp",
+			"type": "http"
+		},
+        "playwright": {
+            "command": "npx",
+            "args": [
+            "@playwright/mcp@latest"
+            ]
+        },
+        "server-ts": {
+            "command": "node",
+            "args": ["08 - consuming servers/code/build/index.js"],
+            "dev": {
+                "watch": "08 - consuming servers/code/build/**/*.js",
+                "debug": { "type": "node" }
+            }
+        },
+        "sample-server": {
+            "command": "python",
+            "args": ["09 - sampling and elicitation/code/python/sample-server.py"]
+        }
+	},
+	"inputs": []
+}
