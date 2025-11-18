@@ -1,0 +1,25 @@
+{
+    "type": "module",
+    "bin": {
+        "weather": "./build/index.js"
+    },
+    "scripts": {
+        "start:auth-server": "node ./build/auth-server.js",
+        "start:resource-server": "node ./build/resource-server.js",
+        "start:client":"node ./build/client.js",
+        "build": "tsc"
+    },
+    "files": [
+        "build"
+    ],
+    "dependencies": {
+        "express": "^4.21.2",
+        "axios": "",
+        "type": "^2.7.3",
+        "uuid": "^11.1.0"
+    },
+    "devDependencies": {
+        "@types/node": "^20.11.24",
+        "typescript": "^5.3.3"
+    }
+}
